@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+## Test Práctico Frontend React js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# autor
 
-## Available Scripts
+Carlos Ramón Bautista Rodríguez
 
-In the project directory, you can run:
+## Requerimientos:
+
+A continuación presentamos el diseño y la descripción funcional de una pequeña aplicación
+que será la base del trabajo que deberás desarrollar. La aplicación consta de tres
+componentes principales:
+
+    ● Gráfica de evolución de precio
+    ● Gráfica de presencia del producto
+    ● Tabla de productos
+
+Te pedimos: Con los diseños dados, construir las siguientes tres vistas:
+
+    ● Gráfica de evolución de precio
+    ● Gráfica de presencia del producto
+    ● Tabla de productos
+
+Reglas de negocio:
+
+    ● En la tabla de productos el campo de % de presencia si es negativo debe mostrarse
+    en color rojo y es positivo en color verde (colores de acuerdo a la guía de estilos).
+    ● Debe consultar los siguientes endpoint:
+
+    1.- GET https://atlantia-dev-test.herokuapp.com/api/price-evolution-chart/ (evolución de
+    precio, agrupar por sku)
+
+    2.- GET https://atlantia-dev-test.herokuapp.com/api/presence-share-chart/ (presencia del
+    producto)
+
+    3.- GET https://atlantia-dev-test.herokuapp.com/api/beer-products/ (Tabla de producto
+
+## Scripts (esencialmente los de CRA):
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Corre la app en development mode.<br />
+Apunta a [http://localhost:3000](http://localhost:3000).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm build`
 
-### `npm test`
+Boundlea la app para produccion en la carpeta de `build`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Info acerca de Deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run build`
+# Estructura del proyecto:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Components:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+El `ChartEvo` component renderiza la primera gráfica y recibe como props todos los datos ya formateados para que la grafica funcione.
+Los datos son formateados desde el archivo `apiClient.js` despues de recibir una respuesta correcta de la peticion, se utilizo la libreria axios ya que esta nos ofrece una API unificada para las solicitudes, está altamente pensado para facilitar el consumo de servicios web.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+El `ChartPresence` component renderiza la segunda gráfica y recibe como props todos los datos ya formateados para que la grafica funcione.Posterior a recibir una respuesta correcta se utiliza el metodo  `.sort` para ordenar el arreglo por `dateExtraction`, despues se recorre el arreglo y se filtra, realizando push para llegar al formato de datos que la grafica necesita. Cuando se reciben los datos correctamente se crea un objeto que contendra los datos en el formato para la grafica, esto haciendo un `forEach` y posteriormente un `.push` al nuevo objeto.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+El `ShowTable` component renderiza la tabla y recibe como props todos los datos para que ser mapeados y enlistados segun las reglas de negocio.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Consts:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+El proyecto hace uso de constantes importadas en vez de strings directas para evitar error humano y poder reimportar los metodos, variables y strings mas facilmente por toda la aplicacion.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Las `consts` hacen referencia a los 3 endpoints.
 
-## Learn More
+## styled-components:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+El proyecto utiliza la libreria styled-components para hacer mejor scope de mis estilos en cada componente.
+Cada componente cuenta con su propio archivo de estilos, asi tenemos un proyecto con mejor estructura, codigos independientes y modulares.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
