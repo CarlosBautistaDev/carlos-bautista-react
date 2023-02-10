@@ -1,4 +1,4 @@
-## Test Práctico Frontend React js
+## Proyecto charts React js
 
 # autor
 
@@ -24,15 +24,7 @@ Reglas de negocio:
 
     ● En la tabla de productos el campo de % de presencia si es negativo debe mostrarse
     en color rojo y es positivo en color verde (colores de acuerdo a la guía de estilos).
-    ● Debe consultar los siguientes endpoint:
-
-    1.- GET https://atlantia-dev-test.herokuapp.com/api/price-evolution-chart/ (evolución de
-    precio, agrupar por sku)
-
-    2.- GET https://atlantia-dev-test.herokuapp.com/api/presence-share-chart/ (presencia del
-    producto)
-
-    3.- GET https://atlantia-dev-test.herokuapp.com/api/beer-products/ (Tabla de producto
+    
 
 ## Scripts (esencialmente los de CRA):
 
